@@ -24,7 +24,7 @@ def predict(request):
         img_stream = BytesIO(img_bytes)
 
         # VGG16が要求する画像サイズにリサイズ
-        img = load_img(img_stream, target_size=(224, 224))
+        img = load_img(img_stream, target_size=(224, 224), color_mode='rgb')
         img_array = img_to_array(img).reshape(1, 224, 224, 3) / 255.0
 
         model_path = os.path.join(settings.BASE_DIR, 'prediction', 'models', 'model.h5')
